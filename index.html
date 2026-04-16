@@ -190,28 +190,52 @@ h1.glow-done{animation:fadeUp .5s ease .3s both,title-glow 3s ease-in-out 1s inf
   animation:slot-spin .6s cubic-bezier(.4,0,.2,1) both;
 }
 
-/* ── RESPONSIVE MOBILE ── */
-@media(max-width:480px){
-  .page{padding:0 12px 80px}
-  .header{padding-top:56px}
-  .logo-wrap{width:120px;height:120px}
-  .links{gap:10px}
-  .card-in{padding:12px 14px;gap:11px}
+/* VISIT STATS */
+.visit-strip{display:flex;gap:8px;width:100%;max-width:430px;margin-bottom:14px;animation:fadeUp .5s ease .52s both}
+.vs-box{flex:1;background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:9px 10px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:center;gap:2px}
+.vs-num{font-size:1.15rem;font-weight:900;background:linear-gradient(135deg,var(--gold2),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.vs-lbl{font-size:.56rem;font-weight:300;color:var(--subtxt);letter-spacing:.04em}
+.vs-diff{font-size:.7rem;font-weight:900;line-height:1}
+
+/* ── RESPONSIVE ── */
+  .header{padding-top:52px;width:100%}
+  .logo-wrap{width:118px;height:118px}
+  .links{gap:9px;width:100%}
+  .card-in{padding:11px 13px;gap:10px}
   .ico{width:44px;height:44px;border-radius:13px}
-  .tname{font-size:1rem}
-  .tnote{font-size:.68rem}
-  .stats-strip{gap:6px}
-  .stat-box{padding:8px 8px}
-  .stat-num{font-size:.95rem}
-  h1{font-size:1.4rem!important}
-  .hero-name{font-size:1rem}
-  .hero-handle{font-size:.6rem}
-  .qr-box{gap:10px}
-  .qr-img{width:68px;height:68px}
+  .tname{font-size:.98rem}
+  .tnote{font-size:.67rem}
+  h1{font-size:clamp(1.25rem,5.5vw,1.6rem)!important}
+  .qr-box{gap:10px;padding:12px 14px}
+  .qr-img{width:66px;height:66px}
+  .brand-pill{font-size:.64rem;padding:3px 12px}
+  .sub{font-size:.76rem}
+  .hours-badge{font-size:.66rem;padding:4px 12px}
+  .copy-btn{width:30px;height:30px}
+  .mode-btn,.share-btn{width:36px;height:36px;top:12px}
+  .mode-btn{left:10px}.share-btn{right:10px}
+  .tbtn{width:27px;height:27px}
 }
-@media(max-width:360px){
-  .logo-wrap{width:100px;height:100px}
-  .page{padding:0 10px 80px}
+@media(max-width:380px){
+  .page{padding:0 8px 80px}
+  .logo-wrap{width:105px;height:105px}
+  .card-in{padding:10px 11px;gap:9px}
+  .ico{width:40px;height:40px;border-radius:12px}
+  .tname{font-size:.92rem}
+  h1{font-size:clamp(1.15rem,5vw,1.4rem)!important}
+}
+@media(max-width:340px){
+  .page{padding:0 7px 80px}
+  .logo-wrap{width:96px;height:96px}
+  .tname{font-size:.88rem}
+  h1{font-size:1.1rem!important}
+}
+@media(min-width:601px){
+  .header,.links,.about,.marquee-wrap,.qr-wrap{max-width:500px}
+  .logo-wrap{width:140px;height:140px}
+  h1{font-size:2rem!important}
+  .ico{width:54px;height:54px}
+  .tname{font-size:1.15rem}
 }
 
 @keyframes slot-spin{
@@ -341,28 +365,48 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
 .install-btn{display:none;align-items:center;gap:7px;margin-top:14px;background:rgba(201,124,42,.15);border:1px solid rgba(201,124,42,.3);border-radius:100px;padding:8px 20px;font-size:.76rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal",sans-serif;transition:background .25s,transform .25s}
 .install-btn.visible{display:flex}.install-btn:hover{background:rgba(201,124,42,.25);transform:scale(1.04)}
 
-/* ── RESPONSIVE MOBILE ── */
-@media(max-width:480px){
-  .page{padding:0 12px 80px}
-  .header{padding-top:56px}
-  .logo-wrap{width:120px;height:120px}
-  .links{gap:10px}
-  .card-in{padding:12px 14px;gap:11px}
+/* ── RESPONSIVE ── */
+*{-webkit-tap-highlight-color:transparent}
+@media(max-width:430px){
+  .page{padding:0 10px 80px;width:100%}
+  .header{padding-top:52px;width:100%}
+  .logo-wrap{width:118px;height:118px}
+  .links{gap:9px;width:100%}
+  .card-in{padding:11px 13px;gap:10px}
   .ico{width:44px;height:44px;border-radius:13px}
-  .tname{font-size:1rem}
-  .tnote{font-size:.68rem}
-  .stats-strip{gap:6px}
-  .stat-box{padding:8px 8px}
-  .stat-num{font-size:.95rem}
-  h1{font-size:1.4rem!important}
-  .hero-name{font-size:1rem}
-  .hero-handle{font-size:.6rem}
-  .qr-box{gap:10px}
-  .qr-img{width:68px;height:68px}
+  .tname{font-size:.98rem}
+  .tnote{font-size:.67rem}
+  h1{font-size:clamp(1.25rem,5.5vw,1.6rem)!important}
+  .qr-box{gap:10px;padding:12px 14px}
+  .qr-img{width:66px;height:66px}
+  .brand-pill{font-size:.64rem;padding:3px 12px}
+  .sub{font-size:.76rem}
+  .hours-badge{font-size:.66rem;padding:4px 12px}
+  .copy-btn{width:30px;height:30px}
+  .mode-btn,.share-btn{width:36px;height:36px;top:12px}
+  .mode-btn{left:10px}.share-btn{right:10px}
+  .tbtn{width:27px;height:27px}
 }
-@media(max-width:360px){
-  .logo-wrap{width:100px;height:100px}
-  .page{padding:0 10px 80px}
+@media(max-width:380px){
+  .page{padding:0 8px 80px}
+  .logo-wrap{width:105px;height:105px}
+  .card-in{padding:10px 11px;gap:9px}
+  .ico{width:40px;height:40px;border-radius:12px}
+  .tname{font-size:.92rem}
+  h1{font-size:clamp(1.15rem,5vw,1.4rem)!important}
+}
+@media(max-width:340px){
+  .page{padding:0 7px 80px}
+  .logo-wrap{width:96px;height:96px}
+  .tname{font-size:.88rem}
+  h1{font-size:1.1rem!important}
+}
+@media(min-width:601px){
+  .header,.links,.about,.marquee-wrap,.qr-wrap{max-width:500px}
+  .logo-wrap{width:140px;height:140px}
+  h1{font-size:2rem!important}
+  .ico{width:54px;height:54px}
+  .tname{font-size:1.15rem}
 }
 
 @keyframes slot-spin{
@@ -402,71 +446,53 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
 <div class="page">
   <header class="header">
     <div class="logo-wrap">
-      <div class="logo-new-badge">تازەکاری ✦</div>
       <canvas id="logo-cv"></canvas>
       <div class="logo-fire"><div class="logo-fire-in" id="fireIn"></div></div>
       <div class="logo-glow"></div>
       <div class="logo-ring"><div class="logo-ring-in" id="ringIn"><div class="logo-face">
-        <svg viewBox="0 0 200 200" style="width:90%;height:90%" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 200 200" style="width:92%;height:92%" xmlns="http://www.w3.org/2000/svg">
+          <!-- باکگراوندی سپی -->
+          <circle cx="100" cy="100" r="99" fill="white"/>
           <!-- دایرەی دەرەوە -->
-          <circle cx="100" cy="100" r="96" fill="white" stroke="#1240ab" stroke-width="4"/>
-          <circle cx="100" cy="100" r="86" fill="none" stroke="#1240ab" stroke-width="2.5"/>
-          <circle cx="100" cy="100" r="72" fill="none" stroke="#1240ab" stroke-width="2"/>
-
-          <!-- ١٢ ئەستێرە دەوری -->
+          <circle cx="100" cy="100" r="95" fill="none" stroke="#1240ab" stroke-width="3"/>
+          <circle cx="100" cy="100" r="83" fill="none" stroke="#1240ab" stroke-width="1.8"/>
+          <!-- ١٢ ئەستێرە -->
           <g fill="#1240ab">
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(0,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(30,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(60,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(90,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(120,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(150,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(180,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(210,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(240,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(270,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(300,100,100)"/>
-            <path d="M100,8 L102,14 L108,14 L103,18 L105,24 L100,20 L95,24 L97,18 L92,14 L98,14 Z" transform="rotate(330,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(0,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(30,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(60,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(90,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(120,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(150,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(180,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(210,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(240,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(270,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(300,100,100)"/>
+            <path d="M100,3 L102,9 L108,9 L103,13 L105,19 L100,15 L95,19 L97,13 L92,9 L98,9 Z" transform="rotate(330,100,100)"/>
           </g>
-
-          <!-- نووسینی بازاری لە سەرەوە -->
-          <text x="100" y="36" text-anchor="middle"
-            font-family="Tajawal,Arial,sans-serif"
-            font-size="20" font-weight="900"
-            fill="#1240ab">بازاری</text>
-
-          <!-- نووسینی سامان شێخانی ناوەڕاست -->
-          <text x="100" y="64" text-anchor="middle"
-            font-family="Tajawal,Arial,sans-serif"
-            font-size="17" font-weight="900"
-            fill="#1240ab">سامان شێخانی</text>
-
-          <!-- سەبەتەی کلتوو (shopping cart detailed) -->
-          <g transform="translate(52,70)" fill="#1240ab">
-            <!-- جەستەی سەبەتە -->
-            <path d="M18 14 L80 14 L74 48 L24 48 Z" fill="none" stroke="#1240ab" stroke-width="3" stroke-linejoin="round"/>
-            <!-- خەتە ناوەکییەکان -->
-            <line x1="34" y1="14" x2="32" y2="48" stroke="#1240ab" stroke-width="1.5"/>
-            <line x1="50" y1="14" x2="50" y2="48" stroke="#1240ab" stroke-width="1.5"/>
-            <line x1="66" y1="14" x2="68" y2="48" stroke="#1240ab" stroke-width="1.5"/>
-            <line x1="16" y1="25" x2="78" y2="25" stroke="#1240ab" stroke-width="1.5"/>
-            <line x1="14" y1="36" x2="77" y2="36" stroke="#1240ab" stroke-width="1.5"/>
-            <!-- دەستەکە -->
-            <path d="M8 14 L18 14 M4 6 L8 14" stroke="#1240ab" stroke-width="3" stroke-linecap="round"/>
-            <!-- تەکەرەکان -->
-            <circle cx="28" cy="56" r="6" fill="#1240ab"/>
-            <circle cx="66" cy="56" r="6" fill="#1240ab"/>
-            <!-- بەرهەمەکان ناو سەبەتە -->
-            <rect x="24" y="2" width="14" height="14" rx="2" fill="#1240ab"/>
-            <rect x="42" y="0" width="12" height="16" rx="2" fill="#1240ab" opacity="0.85"/>
-            <circle cx="66" cy="8" r="7" fill="#1240ab" opacity="0.9"/>
+          <!-- بازاری -->
+          <text x="100" y="35" text-anchor="middle" font-family="Tajawal,Arial,sans-serif" font-size="20" font-weight="900" fill="#1240ab">بازاری</text>
+          <!-- سامان شێخانی -->
+          <text x="100" y="57" text-anchor="middle" font-family="Tajawal,Arial,sans-serif" font-size="15" font-weight="900" fill="#1240ab">سامان شێخانی</text>
+          <!-- سەبەتە -->
+          <g transform="translate(68,64)" fill="none" stroke="#1240ab" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2,0 L60,0 L54,34 L8,34 Z" fill="rgba(18,64,171,0.07)"/>
+            <line x1="18" y1="0" x2="16" y2="34" stroke-width="1.3"/>
+            <line x1="32" y1="0" x2="32" y2="34" stroke-width="1.3"/>
+            <line x1="46" y1="0" x2="48" y2="34" stroke-width="1.3"/>
+            <line x1="0" y1="11" x2="62" y2="11" stroke-width="1.3"/>
+            <line x1="0" y1="22" x2="60" y2="22" stroke-width="1.3"/>
+            <path d="M-8,0 L2,0 M-12,-7 L-8,0"/>
+            <circle cx="12" cy="41" r="5" fill="#1240ab" stroke="none"/>
+            <circle cx="50" cy="41" r="5" fill="#1240ab" stroke="none"/>
+            <!-- بەرهەمەکان -->
+            <rect x="6" y="-13" width="11" height="13" rx="2" fill="#1240ab" stroke="none"/>
+            <rect x="22" y="-15" width="10" height="15" rx="2" fill="#1240ab" stroke="none" opacity=".85"/>
+            <circle cx="48" cy="-7" r="7" fill="#1240ab" stroke="none" opacity=".9"/>
           </g>
-
-          <!-- نووسینی داهێنتەر لە هەرزانی خوارەوە -->
-          <text x="100" y="168" text-anchor="middle"
-            font-family="Tajawal,Arial,sans-serif"
-            font-size="13" font-weight="900"
-            fill="#1240ab">داهێنتەر لە هەرزانی</text>
+          <!-- داهێنتەر لە هەرزانی -->
+          <text x="100" y="170" text-anchor="middle" font-family="Tajawal,Arial,sans-serif" font-size="12" font-weight="700" fill="#1240ab">داهێنتەر لە هەرزانی</text>
         </svg>
       </div></div></div>
     </div>
@@ -477,6 +503,23 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
     <div class="time-badge"><span class="live-dot"></span><span id="ts">٠ چرکە</span> لەگەڵمانی</div>
     <div class="orn"><div class="orn-l"></div><div class="orn-s"></div><div class="orn-d"></div><div class="orn-s"></div><div class="orn-l"></div></div>
   </header>
+
+  <!-- VISIT STATS -->
+  <div class="visit-strip" id="visitStrip">
+    <div class="vs-box">
+      <span class="vs-num" id="vs-today">٠</span>
+      <span class="vs-lbl">ئەمڕۆ</span>
+      <span class="vs-diff" id="vs-diff"></span>
+    </div>
+    <div class="vs-box">
+      <span class="vs-num" id="vs-yest">٠</span>
+      <span class="vs-lbl">دوێنێ</span>
+    </div>
+    <div class="vs-box">
+      <span class="vs-num" id="vs-total">٠</span>
+      <span class="vs-lbl">کۆی گشتی</span>
+    </div>
+  </div>
 
 
   <div class="about"><div class="about-box">
@@ -634,6 +677,58 @@ function drawStars(){sx.clearRect(0,0,sc2.width,sc2.height);stars.forEach(s=>{s.
 (function(){const mc=document.getElementById('meteors'),mx=mc.getContext('2d');function rm(){mc.width=innerWidth;mc.height=innerHeight}rm();addEventListener('resize',rm);const ms=[];function dM(){mx.clearRect(0,0,mc.width,mc.height);if(ms.length<5&&Math.random()<.015){ms.push({x:Math.random()*mc.width*.8,y:-20,len:80+Math.random()*100,speed:5+Math.random()*5,angle:Math.PI/4+Math.random()*.2,opacity:1,color:Math.random()>.5?[245,204,122]:[180,220,255]});}for(let i=ms.length-1;i>=0;i--){const m=ms[i];m.x+=Math.cos(m.angle)*m.speed;m.y+=Math.sin(m.angle)*m.speed;m.opacity-=.014;if(m.opacity<=0||m.y>mc.height+50){ms.splice(i,1);continue;}const gg=mx.createLinearGradient(m.x,m.y,m.x-Math.cos(m.angle)*m.len,m.y-Math.sin(m.angle)*m.len);const[r,gr,bl]=m.color;gg.addColorStop(0,`rgba(${r},${gr},${bl},${m.opacity})`);gg.addColorStop(1,`rgba(${r},${gr},${bl},0)`);mx.beginPath();mx.moveTo(m.x,m.y);mx.lineTo(m.x-Math.cos(m.angle)*m.len,m.y-Math.sin(m.angle)*m.len);mx.strokeStyle=gg;mx.lineWidth=1.5;mx.stroke();}requestAnimationFrame(dM);}dM();})();
 // LOGO ORBIT
 (function(){const lc=document.getElementById('logo-cv');if(!lc)return;const lx=lc.getContext('2d');const SZ=166;lc.width=SZ;lc.height=SZ;const cx2=SZ/2,cy2=SZ/2,rad=60;const ops=Array.from({length:8},(_,i)=>({angle:(i/8)*Math.PI*2,speed:.008+Math.random()*.006,size:2+Math.random()*2.5,color:sC[Math.floor(Math.random()*sC.length)],opacity:.7+Math.random()*.3}));let hov=false;const lw=document.querySelector('.logo-wrap');if(lw){lw.addEventListener('mouseenter',()=>hov=true);lw.addEventListener('mouseleave',()=>hov=false);}function dlp(){lx.clearRect(0,0,SZ,SZ);ops.forEach(p=>{p.angle+=p.speed*(hov?2.5:1);const x=cx2+Math.cos(p.angle)*rad,y=cy2+Math.sin(p.angle)*rad*.35;const[r,g,bl]=p.color;lx.beginPath();lx.arc(x,y,p.size,0,Math.PI*2);lx.fillStyle=`rgba(${r},${g},${bl},${p.opacity})`;lx.shadowColor=`rgba(${r},${g},${bl},.6)`;lx.shadowBlur=8;lx.fill();});requestAnimationFrame(dlp);}dlp();})();
+// SUPABASE VISIT TRACKING
+const SB='https://ubuzxxifyoxbnhccyxyo.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVidXp4eGlmeW94Ym5oY2N5eHlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxODgyNTMsImV4cCI6MjA5MTc2NDI1M30.iVHdZdRhleW-yg-MtnnfZH6aWz92VxVoW4kQC8Buj9M';
+async function sb(path,method,body){
+  const r=await fetch(SB+path,{method:method||'GET',headers:{'apikey':SK,'Authorization':'Bearer '+SK,'Content-Type':'application/json','Prefer':'return=representation'},body:body?JSON.stringify(body):undefined});
+  return r.json();
+}
+async function trackVisit(){
+  const today=new Date().toISOString().slice(0,10);
+  const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
+  try{
+    // ئەمڕۆ زیاد بکە
+    if(!sessionStorage.getItem('v')){
+      sessionStorage.setItem('v','1');
+      const rows=await sb('/rest/v1/visits?data=eq.'+today+'&select=*');
+      if(rows&&rows.length>0){
+        await sb('/rest/v1/visits?data=eq.'+today,'PATCH',{count:rows[0].count+1});
+      } else {
+        await sb('/rest/v1/visits','POST',{data:today,count:1});
+      }
+    }
+    // هەموو ڕیزەکان وەربگرە
+    const all=await sb('/rest/v1/visits?select=*&order=data.desc&limit=30');
+    if(!all||!all.length)return;
+    const tRow=all.find(r=>r.data===today);
+    const yRow=all.find(r=>r.data===yesterday);
+    const total=all.reduce((s,r)=>s+(r.count||0),0);
+    const tN=tRow?tRow.count:0;
+    const yN=yRow?yRow.count:0;
+    // نیشاندان
+    showVisitStats(tN,yN,total);
+  }catch(e){console.log('sb err',e);}
+}
+function showVisitStats(today,yesterday,total){
+  // ئەگەر بۆکسی ئامار هەیە نیشانی بدە
+  const strip=document.getElementById('visitStrip');
+  if(strip){
+    const d='٠١٢٣٤٥٦٧٨٩';
+    const f=n=>String(n).replace(/\d/g,x=>d[x]);
+    document.getElementById('vs-today').textContent=f(today);
+    document.getElementById('vs-yest').textContent=f(yesterday);
+    document.getElementById('vs-total').textContent=f(total);
+    const diff=document.getElementById('vs-diff');
+    if(diff){
+      if(today>yesterday){diff.textContent='▲';diff.style.color='#4caf50';}
+      else if(today<yesterday){diff.textContent='▼';diff.style.color='#ef5350';}
+      else{diff.textContent='=';diff.style.color='var(--subtxt)';}
+    }
+  }
+}
+trackVisit();
+
 // TYPING
 const D='٠١٢٣٤٥٦٧٨٩';const f=n=>String(n).replace(/\d/g,x=>D[x]);
 const fullText='بازاڕی سامان شێخانی بەحرکە';const titleEl=document.getElementById('typeTitle');let ii=0;
@@ -729,7 +824,7 @@ function closePopup(){const p=document.getElementById('popup');if(p)p.classList.
 // NIGHT AUTO
 (function(){function check(){const h=new Date().getHours();document.body.classList.toggle('night',h>=20||h<7);}check();setInterval(check,60000);})();
 // QR
-(function(){const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';s.onload=function(){const url='https://bazari-saman-shexani.netlify.app';const cont=document.getElementById('qrC');if(!cont)return;cont.innerHTML='';try{new QRCode(cont,{text:url,width:78,height:78,colorDark:'#1240ab',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.L});}catch(e){}};document.head.appendChild(s);})();
+(function(){const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';s.onload=function(){const url='https://bazarisamanshexani-blip.github.io/samanshexanisocial/';const cont=document.getElementById('qrC');if(!cont)return;cont.innerHTML='';try{new QRCode(cont,{text:url,width:78,height:78,colorDark:'#1240ab',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.L});}catch(e){}};document.head.appendChild(s);})();
 function dlQR(){const c=document.querySelector('#qrC canvas');if(!c)return;const a=document.createElement('a');a.download='qr.png';a.href=c.toDataURL();a.click();}
 
 // PWA
