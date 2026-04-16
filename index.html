@@ -5,18 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1a0e08">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="بازاڕی سامان">
 <link rel="manifest" href="manifest.json">
 <title>بازاڕی سامان شێخانی</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
 :root{--bg0:#1a0e08;--amber:#c97c2a;--gold:#e8a84b;--gold2:#f5cc7a;--warm:#fff5e6;--glass:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.12);--txt:#fdf0dc;--subtxt:rgba(253,240,220,0.45)}
 body.t-blue{--bg0:#060f1f;--amber:#2a6bc9;--gold:#5aa3ff;--gold2:#b8d9ff;--warm:#e8f0ff;--border:rgba(100,160,255,.18);--txt:#e8f0ff;--subtxt:rgba(200,225,255,.45)}
 body.t-teal{--bg0:#061a0e;--amber:#0d9488;--gold:#14b8a6;--gold2:#5eead4;--warm:#e0fdf4;--border:rgba(20,184,166,.18);--txt:#e0fdf4;--subtxt:rgba(167,243,208,.45)}
 body.light{--bg0:#f5ece0;--glass:rgba(255,255,255,.6);--border:rgba(180,120,60,.18);--txt:#2d1a0e;--subtxt:rgba(60,30,10,.5)}
-html,body{min-height:100%}
-body{font-family:"Tajawal",sans-serif;background:var(--bg0);color:var(--txt);overflow-x:hidden;transition:background .5s,color .4s;cursor:none}
+html,body{min-height:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg0);color:var(--txt);overflow-x:hidden;transition:background .5s,color .4s;cursor:none;-webkit-overflow-scrolling:touch;-webkit-tap-highlight-color:transparent}
 #bg,#stars,#snow,#meteors{position:fixed;inset:0;z-index:0;pointer-events:none}
 #stars{z-index:1}#snow{z-index:2;opacity:.55}#meteors{z-index:3}
 .grain{position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -27,7 +30,7 @@ body.t-teal::before{background:linear-gradient(-45deg,#061a0e,#0e2d18,#030a08,#0
 .cur-dot{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;box-shadow:0 0 10px rgba(232,168,75,.6)}
 .cur-ring{position:fixed;width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(232,168,75,.45);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s}
 .cur-dot.h{width:14px;height:14px;background:var(--gold2)}.cur-ring.h{width:44px;height:44px;border-color:rgba(232,168,75,.8)}
-@media(hover:none){.cur-dot,.cur-ring{display:none}body{cursor:auto}}
+@media(hover:none),(pointer:coarse){.cur-dot,.cur-ring{display:none!important}body{cursor:auto!important}}
 .cp{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;animation:cp-fly .5s ease-out forwards}
 @keyframes cp-fly{0%{transform:translate(0,0) scale(1);opacity:.9}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}}
 .mode-btn,.share-btn{position:fixed;top:14px;z-index:100;width:38px;height:38px;border-radius:50%;background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:transform .25s}
@@ -37,12 +40,12 @@ body.t-teal::before{background:linear-gradient(-45deg,#061a0e,#0e2d18,#030a08,#0
 .tbtn{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,.2);transition:transform .25s,border-color .25s;box-shadow:0 3px 12px rgba(0,0,0,.3)}
 .tbtn:hover{transform:scale(1.2)}.tbtn.active{border-color:rgba(255,255,255,.8);transform:scale(1.1)}
 .tbtn.ta{background:linear-gradient(135deg,#c97c2a,#f5cc7a)}.tbtn.tb{background:linear-gradient(135deg,#2a6bc9,#7ab5f5)}.tbtn.tt{background:linear-gradient(135deg,#0d9488,#5eead4)}
-.scroll-top{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:200;background:linear-gradient(135deg,var(--amber),var(--gold));border:none;border-radius:100px;padding:9px 20px;display:flex;align-items:center;gap:6px;font-family:"Tajawal",sans-serif;font-size:.76rem;font-weight:800;color:#1a0e08;cursor:pointer;box-shadow:0 6px 22px rgba(201,124,42,.4);transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .35s;opacity:0;pointer-events:none}
+.scroll-top{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:200;background:linear-gradient(135deg,var(--amber),var(--gold));border:none;border-radius:100px;padding:9px 20px;display:flex;align-items:center;gap:6px;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.76rem;font-weight:800;color:#1a0e08;cursor:pointer;box-shadow:0 6px 22px rgba(201,124,42,.4);transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .35s;opacity:0;pointer-events:none}
 .scroll-top.vis{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:all}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(201,124,42,.95);backdrop-filter:blur(12px);color:#fff;font-family:"Tajawal",sans-serif;font-size:.82rem;font-weight:700;padding:9px 22px;border-radius:100px;opacity:0;pointer-events:none;z-index:999;transition:opacity .3s,transform .3s;white-space:nowrap}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(201,124,42,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.82rem;font-weight:700;padding:9px 22px;border-radius:100px;opacity:0;pointer-events:none;z-index:999;transition:opacity .3s,transform .3s;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .wm{position:fixed;bottom:-15px;left:50%;transform:translateX(-50%);font-size:clamp(5rem,22vw,9rem);font-weight:900;color:rgba(201,124,42,.04);white-space:nowrap;pointer-events:none;z-index:1;user-select:none}
-.pop-ov{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
+.pop-ov{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.65);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
 .pop-ov.show{opacity:1;visibility:visible}
 .pop-box{background:linear-gradient(160deg,#2d1a0e,#1a0e08);border:1px solid rgba(201,124,42,.4);border-radius:28px;padding:30px 24px 24px;max-width:300px;width:88%;text-align:center;transform:scale(.8) translateY(30px);transition:transform .5s cubic-bezier(.34,1.56,.64,1);box-shadow:0 30px 80px rgba(0,0,0,.7);position:relative;overflow:hidden}
 .pop-ov.show .pop-box{transform:scale(1) translateY(0)}
@@ -55,11 +58,11 @@ body.t-teal::before{background:linear-gradient(-45deg,#061a0e,#0e2d18,#030a08,#0
 .pop-stars span{font-size:.75rem;color:var(--gold);animation:star-p .4s cubic-bezier(.34,1.56,.64,1) both}
 .pop-stars span:nth-child(1){animation-delay:.6s}.pop-stars span:nth-child(2){animation-delay:.68s}.pop-stars span:nth-child(3){animation-delay:.76s}.pop-stars span:nth-child(4){animation-delay:.84s}.pop-stars span:nth-child(5){animation-delay:.92s}
 @keyframes star-p{from{transform:scale(0) rotate(-30deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
-.pop-close{background:linear-gradient(135deg,var(--amber),var(--gold),var(--gold2));border:none;border-radius:14px;padding:11px 28px;font-family:"Tajawal",sans-serif;font-size:.9rem;font-weight:900;color:#1a0e08;cursor:pointer;width:100%;box-shadow:0 6px 22px rgba(201,124,42,.45);transition:transform .2s}
+.pop-close{background:linear-gradient(135deg,var(--amber),var(--gold),var(--gold2));border:none;border-radius:14px;padding:11px 28px;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.9rem;font-weight:900;color:#1a0e08;cursor:pointer;width:100%;box-shadow:0 6px 22px rgba(201,124,42,.45);transition:transform .2s}
 .pop-close:hover{transform:translateY(-2px)}
-.page{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;padding:0 14px 80px;width:100%}
+.page{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;padding:0 14px calc(80px + env(safe-area-inset-bottom));padding-right:max(14px,env(safe-area-inset-right));padding-left:max(14px,env(safe-area-inset-left));width:100%}
 .header{width:100%;max-width:430px;display:flex;flex-direction:column;align-items:center;padding-top:60px}
-.logo-wrap{position:relative;width:130px;height:130px;margin-bottom:14px;animation:ppop .7s cubic-bezier(.34,1.56,.64,1) both,logo-breathe 4s ease-in-out 1s infinite;flex-shrink:0}
+.logo-wrap{position:relative;width:130px;height:130px;will-change:transform;margin-bottom:14px;animation:ppop .7s cubic-bezier(.34,1.56,.64,1) both,logo-breathe 4s ease-in-out 1s infinite;flex-shrink:0}
 @keyframes logo-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 .logo-new-badge{position:absolute;top:4px;right:-4px;z-index:20;background:linear-gradient(135deg,#e63b3b,#ff6b6b);color:#fff;font-size:.55rem;font-weight:900;padding:2px 8px;border-radius:100px;box-shadow:0 2px 10px rgba(230,59,59,.6);animation:badge-nb 2s ease-in-out infinite;white-space:nowrap}
 @keyframes badge-nb{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.12) rotate(2deg)}}
@@ -111,10 +114,9 @@ h1.glow-done{animation:fadeUp .5s ease .3s both,title-glow 3s ease-in-out 1s inf
 .qr-img{width:78px;height:78px;border-radius:10px;background:#fff;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .qr-title{font-size:.78rem;font-weight:800;color:var(--txt);display:block;margin-bottom:4px}
 .qr-sub{font-size:.64rem;font-weight:300;color:var(--subtxt);display:block;line-height:1.5;margin-bottom:6px}
-.qr-dl{display:inline-flex;align-items:center;gap:5px;background:rgba(201,124,42,.14);border:1px solid rgba(201,124,42,.28);border-radius:100px;padding:4px 12px;font-size:.64rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal",sans-serif;transition:background .2s}
+.qr-dl{display:inline-flex;align-items:center;gap:5px;background:rgba(201,124,42,.14);border:1px solid rgba(201,124,42,.28);border-radius:100px;padding:4px 12px;font-size:.64rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .2s}
 .qr-dl:hover{background:rgba(201,124,42,.25)}
 .links{width:100%;max-width:430px;display:flex;flex-direction:column;gap:14px}
-
 
 .card.fb .tname{background:linear-gradient(90deg,var(--txt),#7ab5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .card.tt .tname{background:linear-gradient(90deg,var(--txt),#69c9d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -181,14 +183,6 @@ h1.glow-done{animation:fadeUp .5s ease .3s both,title-glow 3s ease-in-out 1s inf
 #stars2{position:fixed;inset:0;z-index:1;pointer-events:none}
 
 /* ══ سلۆت ماشین کاونتەر ══ */
-.counter-num{
-  display:inline-flex;flex-direction:column;overflow:hidden;
-  height:1.4em;vertical-align:top;
-}
-.digit-slot{
-  display:flex;flex-direction:column;align-items:center;
-  animation:slot-spin .6s cubic-bezier(.4,0,.2,1) both;
-}
 
 /* VISIT STATS */
 .visit-strip{display:flex;gap:8px;width:100%;max-width:430px;margin-bottom:14px;animation:fadeUp .5s ease .52s both}
@@ -238,6 +232,16 @@ h1.glow-done{animation:fadeUp .5s ease .3s both,title-glow 3s ease-in-out 1s inf
   .tname{font-size:1.15rem}
 }
 
+
+/* iOS TOUCH FEEDBACK */
+.card:active{transform:scale(.97)!important;opacity:.85}
+@supports(-webkit-touch-callout:none){
+  .card-in{-webkit-backdrop-filter:blur(28px) saturate(160%)!important}
+  .pop-ov{-webkit-backdrop-filter:blur(10px)!important}
+  .toast{-webkit-backdrop-filter:blur(12px)!important}
+  body{-webkit-text-size-adjust:100%}
+}
+
 @keyframes slot-spin{
   0%{transform:translateY(-100%);opacity:0}
   60%{transform:translateY(10%)}
@@ -252,7 +256,6 @@ h1.glow-done{
   66%{background:linear-gradient(150deg,#fff5e6,#e8a84b 60%,#c97c2a);-webkit-background-clip:text;background-clip:text}
   100%{background:linear-gradient(150deg,#fff5e6,#f5cc7a 60%,#c97c2a);-webkit-background-clip:text;background-clip:text}
 }
-
 
 /* ══ ٣. ENTRANCE RIPPLE EFFECT ══ */
 @keyframes card-entrance{
@@ -306,7 +309,7 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
 
 /* BUBBLES */
 #bubbles{position:fixed;inset:0;z-index:0;pointer-events:none}
-.card{display:block;text-decoration:none;color:var(--txt);border-radius:20px;position:relative;opacity:0;transition:opacity .5s,transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.card{display:block;text-decoration:none;color:var(--txt);border-radius:20px;position:relative;opacity:0;will-change:transform,opacity;transition:opacity .5s,transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
 .card:nth-child(odd){transform:translateX(50px)}.card:nth-child(even){transform:translateX(-50px)}
 .card:nth-child(1){transition-delay:.3s}.card:nth-child(2){transition-delay:.42s}.card:nth-child(3){transition-delay:.54s}.card:nth-child(4){transition-delay:.66s}.card:nth-child(5){transition-delay:.78s}
 .card.on{opacity:1;transform:translateX(0)!important}
@@ -362,51 +365,17 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
 .f-dot:nth-child(2){animation-delay:.22s;background:rgba(201,124,42,.6)}.f-dot:nth-child(3){animation-delay:.44s}
 @keyframes dwave{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-5px);opacity:1}}
 .f-txt{font-size:.65rem;color:var(--subtxt);font-weight:300;letter-spacing:.05em;opacity:.5}
-.install-btn{display:none;align-items:center;gap:7px;margin-top:14px;background:rgba(201,124,42,.15);border:1px solid rgba(201,124,42,.3);border-radius:100px;padding:8px 20px;font-size:.76rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal",sans-serif;transition:background .25s,transform .25s}
+.install-btn{display:none;align-items:center;gap:7px;margin-top:14px;background:rgba(201,124,42,.15);border:1px solid rgba(201,124,42,.3);border-radius:100px;padding:8px 20px;font-size:.76rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .25s,transform .25s}
 .install-btn.visible{display:flex}.install-btn:hover{background:rgba(201,124,42,.25);transform:scale(1.04)}
 
-/* ── RESPONSIVE ── */
-*{-webkit-tap-highlight-color:transparent}
-@media(max-width:430px){
-  .page{padding:0 10px 80px;width:100%}
-  .header{padding-top:52px;width:100%}
-  .logo-wrap{width:118px;height:118px}
-  .links{gap:9px;width:100%}
-  .card-in{padding:11px 13px;gap:10px}
-  .ico{width:44px;height:44px;border-radius:13px}
-  .tname{font-size:.98rem}
-  .tnote{font-size:.67rem}
-  h1{font-size:clamp(1.25rem,5.5vw,1.6rem)!important}
-  .qr-box{gap:10px;padding:12px 14px}
-  .qr-img{width:66px;height:66px}
-  .brand-pill{font-size:.64rem;padding:3px 12px}
-  .sub{font-size:.76rem}
-  .hours-badge{font-size:.66rem;padding:4px 12px}
-  .copy-btn{width:30px;height:30px}
-  .mode-btn,.share-btn{width:36px;height:36px;top:12px}
-  .mode-btn{left:10px}.share-btn{right:10px}
-  .tbtn{width:27px;height:27px}
-}
-@media(max-width:380px){
-  .page{padding:0 8px 80px}
-  .logo-wrap{width:105px;height:105px}
-  .card-in{padding:10px 11px;gap:9px}
-  .ico{width:40px;height:40px;border-radius:12px}
-  .tname{font-size:.92rem}
-  h1{font-size:clamp(1.15rem,5vw,1.4rem)!important}
-}
-@media(max-width:340px){
-  .page{padding:0 7px 80px}
-  .logo-wrap{width:96px;height:96px}
-  .tname{font-size:.88rem}
-  h1{font-size:1.1rem!important}
-}
-@media(min-width:601px){
-  .header,.links,.about,.marquee-wrap,.qr-wrap{max-width:500px}
-  .logo-wrap{width:140px;height:140px}
-  h1{font-size:2rem!important}
-  .ico{width:54px;height:54px}
-  .tname{font-size:1.15rem}
+
+/* iOS TOUCH FEEDBACK */
+.card:active{transform:scale(.97)!important;opacity:.85}
+@supports(-webkit-touch-callout:none){
+  .card-in{-webkit-backdrop-filter:blur(28px) saturate(160%)!important}
+  .pop-ov{-webkit-backdrop-filter:blur(10px)!important}
+  .toast{-webkit-backdrop-filter:blur(12px)!important}
+  body{-webkit-text-size-adjust:100%}
 }
 
 @keyframes slot-spin{
@@ -521,7 +490,6 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
     </div>
   </div>
 
-
   <div class="about"><div class="about-box">
     <div class="about-title">دەربارەمان</div>
     <p class="about-text">بازاڕی سامان شێخانی بەحرکە — فرۆشگایەکی بەناوبانگ لە بەحرکە. بەرپرسی داهێنانی نرخی گونجاو بۆ هەموو کەسێک.</p>
@@ -627,26 +595,6 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
     requestAnimationFrame(draw);
   }draw();
 })();
-
-// SLOT MACHINE COUNTER
-function slotCount(el,target,dur){
-  if(!el)return;
-  const d='٠١٢٣٤٥٦٧٨٩';
-  const tStr=String(target).replace(/\d/g,n=>d[n]);
-  el.innerHTML='';
-  tStr.split('').forEach((ch,i)=>{
-    const span=document.createElement('span');
-    span.style.cssText=`display:inline-block;animation:slot-spin .5s cubic-bezier(.34,1.56,.64,1) both;animation-delay:${i*.08+.2}s;opacity:0;animation-fill-mode:both`;
-    // Add keyframe dynamically
-    span.style.animation=`slot-spin .5s cubic-bezier(.34,1.56,.64,1) ${i*.08+.2}s both`;
-    span.textContent=ch;
-    el.appendChild(span);
-  });
-  // fallback: make sure visible after animation
-  setTimeout(()=>{
-    el.querySelectorAll('span').forEach(s=>s.style.opacity='1');
-  },dur+500);
-}
 
 // VISITOR COUNTER
 // BG
@@ -829,5 +777,19 @@ function dlQR(){const c=document.querySelector('#qrC canvas');if(!c)return;const
 
 // PWA
 let dp;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;const b=document.getElementById('installBtn');if(b)b.classList.add('visible');});document.getElementById('installBtn').addEventListener('click',async()=>{if(!dp)return;dp.prompt();const{outcome}=await dp.userChoice;if(outcome==='accepted'){const b=document.getElementById('installBtn');if(b)b.classList.remove('visible');}dp=null;});window.addEventListener('appinstalled',()=>{const b=document.getElementById('installBtn');if(b)b.classList.remove('visible');});
-if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+
+// SW UPDATE CHECK
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').then(reg=>{
+    reg.addEventListener('updatefound',()=>{
+      const nw=reg.installing;
+      nw.addEventListener('statechange',()=>{
+        if(nw.state==='installed'&&navigator.serviceWorker.controller){
+          // New version available - reload silently
+          window.location.reload();
+        }
+      });
+    });
+  }).catch(()=>{});
+}
 </script></body></html>
