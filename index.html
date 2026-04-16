@@ -9,17 +9,39 @@
 <meta name="apple-mobile-web-app-title" content="بازاڕی سامان">
 <link rel="manifest" href="manifest.json">
 <title>بازاڕی سامان شێخانی</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.gstatic.com/s/tajawal/v10/Iura6YBj_oCad4k1rzaLCr5IlLA.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://fonts.gstatic.com/s/tajawal/v10/Iura6YBj_oCad4k1nD6BSipQ0S8.woff2" as="font" type="font/woff2" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
+
+/* iOS ARABIC FONT FALLBACK */
+@font-face {
+  font-family: 'Tajawal';
+  src: url('https://fonts.gstatic.com/s/tajawal/v10/Iura6YBj_oCad4k1nD6BSipQ0S8.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/tajawal/v10/Iura6YBj_oCad4k1rzaLCr5IlLA.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Tajawal';
+  src: url('https://fonts.gstatic.com/s/tajawal/v10/Iura6YBj_oCad4k1l96BSipQ0S8.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
 :root{--bg0:#1a0e08;--amber:#c97c2a;--gold:#e8a84b;--gold2:#f5cc7a;--warm:#fff5e6;--glass:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.12);--txt:#fdf0dc;--subtxt:rgba(253,240,220,0.45)}
 body.t-blue{--bg0:#060f1f;--amber:#2a6bc9;--gold:#5aa3ff;--gold2:#b8d9ff;--warm:#e8f0ff;--border:rgba(100,160,255,.18);--txt:#e8f0ff;--subtxt:rgba(200,225,255,.45)}
 body.t-teal{--bg0:#061a0e;--amber:#0d9488;--gold:#14b8a6;--gold2:#5eead4;--warm:#e0fdf4;--border:rgba(20,184,166,.18);--txt:#e0fdf4;--subtxt:rgba(167,243,208,.45)}
 body.light{--bg0:#f5ece0;--glass:rgba(255,255,255,.6);--border:rgba(180,120,60,.18);--txt:#2d1a0e;--subtxt:rgba(60,30,10,.5)}
 html,body{min-height:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body{font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg0);color:var(--txt);overflow-x:hidden;transition:background .5s,color .4s;cursor:none;-webkit-overflow-scrolling:touch;-webkit-tap-highlight-color:transparent}
+body{font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;background:var(--bg0);color:var(--txt);overflow-x:hidden;transition:background .5s,color .4s;cursor:none;-webkit-overflow-scrolling:touch;-webkit-tap-highlight-color:transparent}
 #bg,#stars,#snow,#meteors{position:fixed;inset:0;z-index:0;pointer-events:none}
 #stars{z-index:1}#snow{z-index:2;opacity:.55}#meteors{z-index:3}
 .grain{position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -40,9 +62,9 @@ body.t-teal::before{background:linear-gradient(-45deg,#061a0e,#0e2d18,#030a08,#0
 .tbtn{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,.2);transition:transform .25s,border-color .25s;box-shadow:0 3px 12px rgba(0,0,0,.3)}
 .tbtn:hover{transform:scale(1.2)}.tbtn.active{border-color:rgba(255,255,255,.8);transform:scale(1.1)}
 .tbtn.ta{background:linear-gradient(135deg,#c97c2a,#f5cc7a)}.tbtn.tb{background:linear-gradient(135deg,#2a6bc9,#7ab5f5)}.tbtn.tt{background:linear-gradient(135deg,#0d9488,#5eead4)}
-.scroll-top{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:200;background:linear-gradient(135deg,var(--amber),var(--gold));border:none;border-radius:100px;padding:9px 20px;display:flex;align-items:center;gap:6px;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.76rem;font-weight:800;color:#1a0e08;cursor:pointer;box-shadow:0 6px 22px rgba(201,124,42,.4);transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .35s;opacity:0;pointer-events:none}
+.scroll-top{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:200;background:linear-gradient(135deg,var(--amber),var(--gold));border:none;border-radius:100px;padding:9px 20px;display:flex;align-items:center;gap:6px;font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;font-size:.76rem;font-weight:800;color:#1a0e08;cursor:pointer;box-shadow:0 6px 22px rgba(201,124,42,.4);transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .35s;opacity:0;pointer-events:none}
 .scroll-top.vis{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:all}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(201,124,42,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.82rem;font-weight:700;padding:9px 22px;border-radius:100px;opacity:0;pointer-events:none;z-index:999;transition:opacity .3s,transform .3s;white-space:nowrap}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(201,124,42,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;font-size:.82rem;font-weight:700;padding:9px 22px;border-radius:100px;opacity:0;pointer-events:none;z-index:999;transition:opacity .3s,transform .3s;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .wm{position:fixed;bottom:-15px;left:50%;transform:translateX(-50%);font-size:clamp(5rem,22vw,9rem);font-weight:900;color:rgba(201,124,42,.04);white-space:nowrap;pointer-events:none;z-index:1;user-select:none}
 .pop-ov{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.65);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
@@ -58,7 +80,7 @@ body.t-teal::before{background:linear-gradient(-45deg,#061a0e,#0e2d18,#030a08,#0
 .pop-stars span{font-size:.75rem;color:var(--gold);animation:star-p .4s cubic-bezier(.34,1.56,.64,1) both}
 .pop-stars span:nth-child(1){animation-delay:.6s}.pop-stars span:nth-child(2){animation-delay:.68s}.pop-stars span:nth-child(3){animation-delay:.76s}.pop-stars span:nth-child(4){animation-delay:.84s}.pop-stars span:nth-child(5){animation-delay:.92s}
 @keyframes star-p{from{transform:scale(0) rotate(-30deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
-.pop-close{background:linear-gradient(135deg,var(--amber),var(--gold),var(--gold2));border:none;border-radius:14px;padding:11px 28px;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.9rem;font-weight:900;color:#1a0e08;cursor:pointer;width:100%;box-shadow:0 6px 22px rgba(201,124,42,.45);transition:transform .2s}
+.pop-close{background:linear-gradient(135deg,var(--amber),var(--gold),var(--gold2));border:none;border-radius:14px;padding:11px 28px;font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;font-size:.9rem;font-weight:900;color:#1a0e08;cursor:pointer;width:100%;box-shadow:0 6px 22px rgba(201,124,42,.45);transition:transform .2s}
 .pop-close:hover{transform:translateY(-2px)}
 .page{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;padding:0 14px calc(80px + env(safe-area-inset-bottom));padding-right:max(14px,env(safe-area-inset-right));padding-left:max(14px,env(safe-area-inset-left));width:100%}
 .header{width:100%;max-width:430px;display:flex;flex-direction:column;align-items:center;padding-top:60px}
@@ -114,7 +136,7 @@ h1.glow-done{animation:fadeUp .5s ease .3s both,title-glow 3s ease-in-out 1s inf
 .qr-img{width:78px;height:78px;border-radius:10px;background:#fff;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .qr-title{font-size:.78rem;font-weight:800;color:var(--txt);display:block;margin-bottom:4px}
 .qr-sub{font-size:.64rem;font-weight:300;color:var(--subtxt);display:block;line-height:1.5;margin-bottom:6px}
-.qr-dl{display:inline-flex;align-items:center;gap:5px;background:rgba(201,124,42,.14);border:1px solid rgba(201,124,42,.28);border-radius:100px;padding:4px 12px;font-size:.64rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .2s}
+.qr-dl{display:inline-flex;align-items:center;gap:5px;background:rgba(201,124,42,.14);border:1px solid rgba(201,124,42,.28);border-radius:100px;padding:4px 12px;font-size:.64rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;transition:background .2s}
 .qr-dl:hover{background:rgba(201,124,42,.25)}
 .links{width:100%;max-width:430px;display:flex;flex-direction:column;gap:14px}
 
@@ -365,7 +387,7 @@ body.night .gm:hover .card-in{background:rgba(66,133,244,.12)!important}
 .f-dot:nth-child(2){animation-delay:.22s;background:rgba(201,124,42,.6)}.f-dot:nth-child(3){animation-delay:.44s}
 @keyframes dwave{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-5px);opacity:1}}
 .f-txt{font-size:.65rem;color:var(--subtxt);font-weight:300;letter-spacing:.05em;opacity:.5}
-.install-btn{display:none;align-items:center;gap:7px;margin-top:14px;background:rgba(201,124,42,.15);border:1px solid rgba(201,124,42,.3);border-radius:100px;padding:8px 20px;font-size:.76rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:background .25s,transform .25s}
+.install-btn{display:none;align-items:center;gap:7px;margin-top:14px;background:rgba(201,124,42,.15);border:1px solid rgba(201,124,42,.3);border-radius:100px;padding:8px 20px;font-size:.76rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;transition:background .25s,transform .25s}
 .install-btn.visible{display:flex}.install-btn:hover{background:rgba(201,124,42,.25);transform:scale(1.04)}
 
 
@@ -625,6 +647,19 @@ function drawStars(){sx.clearRect(0,0,sc2.width,sc2.height);stars.forEach(s=>{s.
 (function(){const mc=document.getElementById('meteors'),mx=mc.getContext('2d');function rm(){mc.width=innerWidth;mc.height=innerHeight}rm();addEventListener('resize',rm);const ms=[];function dM(){mx.clearRect(0,0,mc.width,mc.height);if(ms.length<5&&Math.random()<.015){ms.push({x:Math.random()*mc.width*.8,y:-20,len:80+Math.random()*100,speed:5+Math.random()*5,angle:Math.PI/4+Math.random()*.2,opacity:1,color:Math.random()>.5?[245,204,122]:[180,220,255]});}for(let i=ms.length-1;i>=0;i--){const m=ms[i];m.x+=Math.cos(m.angle)*m.speed;m.y+=Math.sin(m.angle)*m.speed;m.opacity-=.014;if(m.opacity<=0||m.y>mc.height+50){ms.splice(i,1);continue;}const gg=mx.createLinearGradient(m.x,m.y,m.x-Math.cos(m.angle)*m.len,m.y-Math.sin(m.angle)*m.len);const[r,gr,bl]=m.color;gg.addColorStop(0,`rgba(${r},${gr},${bl},${m.opacity})`);gg.addColorStop(1,`rgba(${r},${gr},${bl},0)`);mx.beginPath();mx.moveTo(m.x,m.y);mx.lineTo(m.x-Math.cos(m.angle)*m.len,m.y-Math.sin(m.angle)*m.len);mx.strokeStyle=gg;mx.lineWidth=1.5;mx.stroke();}requestAnimationFrame(dM);}dM();})();
 // LOGO ORBIT
 (function(){const lc=document.getElementById('logo-cv');if(!lc)return;const lx=lc.getContext('2d');const SZ=166;lc.width=SZ;lc.height=SZ;const cx2=SZ/2,cy2=SZ/2,rad=60;const ops=Array.from({length:8},(_,i)=>({angle:(i/8)*Math.PI*2,speed:.008+Math.random()*.006,size:2+Math.random()*2.5,color:sC[Math.floor(Math.random()*sC.length)],opacity:.7+Math.random()*.3}));let hov=false;const lw=document.querySelector('.logo-wrap');if(lw){lw.addEventListener('mouseenter',()=>hov=true);lw.addEventListener('mouseleave',()=>hov=false);}function dlp(){lx.clearRect(0,0,SZ,SZ);ops.forEach(p=>{p.angle+=p.speed*(hov?2.5:1);const x=cx2+Math.cos(p.angle)*rad,y=cy2+Math.sin(p.angle)*rad*.35;const[r,g,bl]=p.color;lx.beginPath();lx.arc(x,y,p.size,0,Math.PI*2);lx.fillStyle=`rgba(${r},${g},${bl},${p.opacity})`;lx.shadowColor=`rgba(${r},${g},${bl},.6)`;lx.shadowBlur=8;lx.fill();});requestAnimationFrame(dlp);}dlp();})();
+
+// iOS FONT LOADER
+(function(){
+  if(document.fonts && document.fonts.load){
+    document.fonts.load('900 16px Tajawal').then(()=>{
+      document.body.style.fontFamily='"Tajawal","Geeza Pro","Arabic UI Text",Arial,sans-serif';
+    }).catch(()=>{
+      // fallback to system Arabic font
+      document.body.style.fontFamily='"Geeza Pro","Arabic UI Text",Arial,sans-serif';
+    });
+  }
+})();
+
 // SUPABASE VISIT TRACKING
 const SB='https://ubuzxxifyoxbnhccyxyo.supabase.co';
 const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVidXp4eGlmeW94Ym5oY2N5eHlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxODgyNTMsImV4cCI6MjA5MTc2NDI1M30.iVHdZdRhleW-yg-MtnnfZH6aWz92VxVoW4kQC8Buj9M';
