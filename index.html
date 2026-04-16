@@ -635,6 +635,7 @@ function drawStars(){sx.clearRect(0,0,sc2.width,sc2.height);stars.forEach(s=>{s.
 // LOGO ORBIT
 (function(){const lc=document.getElementById('logo-cv');if(!lc)return;const lx=lc.getContext('2d');const SZ=166;lc.width=SZ;lc.height=SZ;const cx2=SZ/2,cy2=SZ/2,rad=60;const ops=Array.from({length:8},(_,i)=>({angle:(i/8)*Math.PI*2,speed:.008+Math.random()*.006,size:2+Math.random()*2.5,color:sC[Math.floor(Math.random()*sC.length)],opacity:.7+Math.random()*.3}));let hov=false;const lw=document.querySelector('.logo-wrap');if(lw){lw.addEventListener('mouseenter',()=>hov=true);lw.addEventListener('mouseleave',()=>hov=false);}function dlp(){lx.clearRect(0,0,SZ,SZ);ops.forEach(p=>{p.angle+=p.speed*(hov?2.5:1);const x=cx2+Math.cos(p.angle)*rad,y=cy2+Math.sin(p.angle)*rad*.35;const[r,g,bl]=p.color;lx.beginPath();lx.arc(x,y,p.size,0,Math.PI*2);lx.fillStyle=`rgba(${r},${g},${bl},${p.opacity})`;lx.shadowColor=`rgba(${r},${g},${bl},.6)`;lx.shadowBlur=8;lx.fill();});requestAnimationFrame(dlp);}dlp();})();
 // TYPING
+const D='٠١٢٣٤٥٦٧٨٩';const f=n=>String(n).replace(/\d/g,x=>D[x]);
 const fullText='بازاڕی سامان شێخانی بەحرکە';const titleEl=document.getElementById('typeTitle');let ii=0;
 function type(){if(ii<=fullText.length){titleEl.innerHTML=fullText.slice(0,ii)+'<span class="cblink"></span>';ii++;setTimeout(type,ii===1?400:65);if(ii>fullText.length)setTimeout(()=>titleEl.classList.add('glow-done'),500);}}
 setTimeout(type,300);
@@ -680,7 +681,6 @@ function digCount(el,target,dur){
     el.appendChild(span);
   });
 }
-})();
 
 // CARD CLICK COUNTER
 ['fb','tt','ig','sc','gm'].forEach(cls=>{const card=document.querySelector('.card.'+cls);if(!card)return;const key='bcc-'+cls;let n=parseInt(localStorage.getItem(key)||'0');const el=document.getElementById('cc'+cls);if(el&&n>0){el.textContent=n;el.classList.add('show');}card.addEventListener('click',()=>{n++;localStorage.setItem(key,n);if(el){el.textContent=n;el.classList.add('show');}});});
