@@ -2,7 +2,7 @@
 <html lang="ku" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#1a0e08">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -87,7 +87,7 @@
 :root{--bg0:#1a0e08;--amber:#c97c2a;--gold:#e8a84b;--gold2:#f5cc7a;--warm:#fff5e6;--glass:rgba(255,255,255,0.07);--border:rgba(255,255,255,0.12);--txt:#fdf0dc;--subtxt:rgba(253,240,220,0.45)}
 body.t-blue{--bg0:#060f1f;--amber:#2a6bc9;--gold:#5aa3ff;--gold2:#b8d9ff;--warm:#e8f0ff;--border:rgba(100,160,255,.18);--txt:#e8f0ff;--subtxt:rgba(200,225,255,.45)}
 body.t-teal{--bg0:#061a0e;--amber:#0d9488;--gold:#14b8a6;--gold2:#5eead4;--warm:#e0fdf4;--border:rgba(20,184,166,.18);--txt:#e0fdf4;--subtxt:rgba(167,243,208,.45)}
-html,body{min-height:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html{overflow-x:hidden;overflow-y:auto;width:100%;max-width:100%}body{min-height:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;width:100%;max-width:100%;position:relative}
 body{font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;background:var(--bg0);color:var(--txt);overflow-x:hidden;transition:background .5s,color .4s;cursor:none;-webkit-overflow-scrolling:touch;-webkit-tap-highlight-color:transparent}
 #bg,#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 #stars{z-index:1}
@@ -415,8 +415,6 @@ h1.glow-done{
 .f-dot:nth-child(2){animation-delay:.22s;background:rgba(201,124,42,.6)}.f-dot:nth-child(3){animation-delay:.44s}
 @keyframes dwave{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-5px);opacity:1}}
 .f-txt{font-size:.65rem;color:var(--subtxt);font-weight:300;letter-spacing:.05em;opacity:.5}
-.install-btn{display:none;align-items:center;gap:7px;margin-top:14px;background:rgba(201,124,42,.15);border:1px solid rgba(201,124,42,.3);border-radius:100px;padding:8px 20px;font-size:.76rem;font-weight:700;color:var(--gold2);cursor:pointer;font-family:"Tajawal","Geeza Pro","Arabic UI Text","Helvetica Neue",Arial,sans-serif;transition:background .25s,transform .25s}
-.install-btn.visible{display:flex}.install-btn:hover{background:rgba(201,124,42,.25);transform:scale(1.04)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
@@ -605,9 +603,6 @@ text-shadow:0 0 12px rgba(20,184,166,.5);
   <div class="footer">
     <div class="f-dots"><div class="f-dot"></div><div class="f-dot"></div><div class="f-dot"></div></div>
     <p class="f-txt">© <span id="copy-yr"></span> بازاڕی سامان شێخانی بەحرکە</p>
-    <button class="install-btn" id="installBtn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v13M7 11l5 5 5-5"/><path d="M3 19h18"/></svg>دابەزاندنی ئەپ
-    </button>
   </div>
 </div>
 <script>
@@ -814,7 +809,7 @@ function closePopup(){const p=document.getElementById('popup');if(p)p.classList.
 function dlQR(){const c=document.querySelector('#qrC canvas');if(!c)return;const a=document.createElement('a');a.download='qr.png';a.href=c.toDataURL();a.click();}
 
 // PWA
-let dp;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;const b=document.getElementById('installBtn');if(b)b.classList.add('visible');});document.getElementById('installBtn').addEventListener('click',async()=>{if(!dp)return;dp.prompt();const{outcome}=await dp.userChoice;if(outcome==='accepted'){const b=document.getElementById('installBtn');if(b)b.classList.remove('visible');}dp=null;});window.addEventListener('appinstalled',()=>{const b=document.getElementById('installBtn');if(b)b.classList.remove('visible');});
+
 
 // SW UPDATE CHECK
 if('serviceWorker' in navigator){
